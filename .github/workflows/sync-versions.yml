@@ -1,0 +1,43 @@
+name: 每日同步版本清单（兜底快照）
+
+# 每天 UTC 01:23（北京时间 09:23）跑一次，把 Gitee 更新源的两个 json
+# 同步到仓库根目录。页面优先读 Gitee 实时接口，接口不可达时读这份同源快照。
+# 仓库若用「Deploy from a branch」部署 Pages，本次提交会自动触发站点重新构建。
+on:
+  schedule:
+    - cron: '23 1 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-version-manifests
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出仓库
+        uses: actions/checkout@v4
+
+      - name: 准备 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 拉取并校验最新清单
+        run: python scripts/sync_versions.py --out-dir .
+
+      - name: 有变化才提交
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add version-public.json version-tv.json
+          if git diff --cached --quiet; then
+            echo "版本清单无变化，跳过提交"
+            exit 0
+          fi
+          git commit -m "chore: sync version manifests from Gitee"
+          git push

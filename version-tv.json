@@ -1,0 +1,11 @@
+{
+  "version": "1.12.17",
+  "versionCode": 49,
+  "apkUrl": "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.17-arm64.apk",
+  "apkUrlFallback": "",
+  "notes": "抖音登录：二维码改成弹窗大图，手机扫得更清楚，带有效期倒计时，过期点「刷新二维码」换一张\n扫码后手机点「确认登录」，电视端自动完成登录，不用再按遥控器；遇到滑块验证会提示稍后再试",
+  "force": false,
+  "publishedAt": "2026-11-08T19:04:03+08:00",
+  "size": 16322667,
+  "runtime": "native"
+}
