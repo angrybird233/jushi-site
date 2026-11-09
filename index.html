@@ -1,0 +1,688 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#060912">
+<meta name="description" content="聚视 · 影视点播、电视台直播与斗鱼 / 虎牙 / B站 / 抖音平台直播，Android 手机与 Android TV 双端可用。安装包轻量，下载地址与更新说明见本页。">
+<meta name="keywords" content="聚视,聚视TV,影视点播,电视台直播,斗鱼,虎牙,B站,抖音,Android TV,电视盒子,APK 下载">
+<meta property="og:title" content="聚视 · 影视 / 电视台 / 平台直播，一个 App 就够了">
+<meta property="og:description" content="手机与电视双端，影视点播、电视频道、四大平台直播，TV 版约 16 MB。">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/logo.png">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<title>聚视 · 影视 / 电视台 / 平台直播，一个 App 就够了</title>
+<style>
+:root{
+  --bg:#060912;
+  --panel:rgba(255,255,255,.038);
+  --panel-2:rgba(255,255,255,.055);
+  --line:rgba(255,255,255,.09);
+  --line-strong:rgba(255,255,255,.16);
+  --txt:#eef2ff;
+  --muted:#98a4c0;
+  --dim:#6f7b97;
+  --brand:#5b7cfa;
+  --brand-2:#a06bff;
+  --cyan:#4cd8e8;
+  --wrap:1180px;
+  --r:20px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  margin:0;background:var(--bg);color:var(--txt);
+  font-family:system-ui,-apple-system,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  -webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+button{font:inherit;cursor:pointer}
+::selection{background:rgba(91,124,250,.42);color:#fff}
+.wrap{width:min(var(--wrap),calc(100% - 48px));margin-inline:auto}
+
+/* ---------- background ---------- */
+.bg{position:fixed;inset:0;z-index:-2;pointer-events:none;background:
+  radial-gradient(900px 560px at 78% -8%,rgba(91,124,250,.20),transparent 68%),
+  radial-gradient(720px 520px at 5% 18%,rgba(160,107,255,.14),transparent 70%),
+  radial-gradient(900px 700px at 50% 100%,rgba(28,90,160,.12),transparent 72%),
+  #060912;}
+.bg-grid{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.35;
+  background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
+  background-size:56px 56px;
+  mask-image:linear-gradient(180deg,#000 0%,transparent 72%);
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 72%);}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:60;transition:background .3s,border-color .3s;
+  background:rgba(6,9,18,.62);border-bottom:1px solid transparent;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.nav.scrolled{background:rgba(6,9,18,.88);border-bottom-color:var(--line)}
+.nav-in{height:70px;display:flex;align-items:center;gap:28px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:700;letter-spacing:.01em;font-size:17px;white-space:nowrap}
+.brand img{width:34px;height:34px;border-radius:9px;box-shadow:0 6px 18px rgba(91,124,250,.35)}
+.brand small{display:block;font-size:10px;letter-spacing:.22em;color:var(--dim);font-weight:600;line-height:1}
+.nav-links{display:flex;gap:26px;margin-left:auto;font-size:14px;color:var(--muted)}
+.nav-links a{transition:color .2s}
+.nav-links a:hover{color:var(--txt)}
+.nav-cta{padding:9px 17px;border-radius:11px;font-size:13px;font-weight:650;color:#fff;
+  background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:0 8px 22px rgba(91,124,250,.28);white-space:nowrap}
+
+/* ---------- common ---------- */
+.grad{background:linear-gradient(95deg,#7ea6ff 0%,#b98aff 52%,#63e0ec 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12px;letter-spacing:.08em;color:#b9c6e8;
+  padding:7px 13px;border-radius:99px;border:1px solid var(--line-strong);background:rgba(255,255,255,.04)}
+.pulse{width:7px;height:7px;border-radius:50%;background:#56e39f;box-shadow:0 0 0 4px rgba(86,227,159,.14);animation:pulse 2.4s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(86,227,159,0)}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;border-radius:13px;
+  font-weight:650;font-size:15px;border:1px solid transparent;transition:transform .22s,box-shadow .22s,background .22s,border-color .22s;white-space:nowrap}
+.btn span{font-size:12px;font-weight:500;opacity:.8}
+.btn-primary{color:#fff;background:linear-gradient(135deg,#5b7cfa,#9d63ff);box-shadow:0 14px 34px rgba(91,124,250,.30)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 42px rgba(91,124,250,.42)}
+.btn-ghost{color:var(--txt);background:rgba(255,255,255,.05);border-color:var(--line-strong)}
+.btn-ghost:hover{transform:translateY(-2px);background:rgba(255,255,255,.09)}
+.btn-block{width:100%}
+.ico{width:18px;height:18px;flex:none}
+section{position:relative}
+.sec{padding:92px 0}
+.sec-head{margin-bottom:44px}
+.sec-head.center{text-align:center}
+.sec-head h2{margin:14px 0 12px;font-size:clamp(28px,3.4vw,40px);line-height:1.24;letter-spacing:-.02em}
+.sec-head p{margin:0;color:var(--muted);font-size:15px;max-width:660px}
+.sec-head.center p{margin-inline:auto}
+.tag{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8fa4e8;font-weight:700}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.3,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- hero ---------- */
+.hero{padding:78px 0 0}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,1.08fr);gap:44px;align-items:center}
+.hero-grid>*{min-width:0}
+.hero h1{margin:22px 0 20px;font-size:clamp(38px,4.8vw,62px);line-height:1.13;letter-spacing:-.035em;font-weight:800}
+.hero h1 .l1,.hero h1 .l2{display:block}
+.lede{font-size:16px;color:var(--muted);line-height:1.9;max-width:530px;margin:0 0 30px;overflow-wrap:anywhere}
+.hero-actions{display:flex;flex-wrap:wrap;gap:13px}
+.hero-meta{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px 18px;font-size:12.5px;color:var(--dim)}
+.hero-meta i{font-style:normal;color:#67dba5;margin-right:5px}
+
+.hero-visual{position:relative;padding:16px 22px 52px 0;perspective:1200px}
+.tv-frame{position:relative;border-radius:17px;padding:9px;
+  background:linear-gradient(155deg,#222b45,#0d1222 62%);border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 44px 90px rgba(0,0,0,.62),0 0 66px rgba(91,124,250,.20);
+  transform:rotateY(-5deg) rotateX(2deg)}
+.tv-screen{border-radius:10px;overflow:hidden;aspect-ratio:16/9;background:#0b1020}
+.tv-screen img{width:100%;height:100%;object-fit:cover;display:block}
+.tv-stand{position:absolute;left:50%;bottom:-22px;transform:translateX(-50%);width:120px;height:22px;
+  background:linear-gradient(180deg,#1d2740,#0c1120);border-radius:0 0 8px 8px}
+.tv-stand::after{content:"";position:absolute;left:-46px;right:-46px;top:20px;height:5px;border-radius:99px;background:#182039}
+.phone-frame{position:absolute;right:-6px;bottom:2px;width:25%;min-width:118px;border-radius:24px;padding:5px;
+  background:linear-gradient(150deg,#293350,#0e1424);border:1px solid rgba(255,255,255,.19);
+  box-shadow:0 26px 48px rgba(0,0,0,.66);transform:rotate(5deg);z-index:2}
+.phone-frame img{display:block;width:100%;border-radius:19px}
+.chip{position:absolute;z-index:3;display:flex;align-items:center;gap:8px;padding:9px 13px;border-radius:12px;
+  font-size:12px;font-weight:600;color:#e9efff;background:rgba(18,25,44,.86);border:1px solid var(--line-strong);
+  backdrop-filter:blur(10px);box-shadow:0 12px 30px rgba(0,0,0,.4)}
+.chip b{color:#8fb4ff;font-size:14px}
+.chip-a{left:-18px;top:14%;animation:float 6s ease-in-out infinite}
+.chip-b{right:-4px;bottom:16%;animation:float 7s ease-in-out infinite reverse}
+@keyframes float{50%{transform:translateY(-9px)}}
+
+.stats{margin-top:64px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat{padding:24px 18px;text-align:center;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat b{display:block;font-size:30px;line-height:1.2;letter-spacing:-.02em;
+  background:linear-gradient(120deg,#9bb9ff,#c39aff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{font-size:12.5px;color:var(--muted)}
+
+/* ---------- features ---------- */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:26px;
+  transition:transform .25s,border-color .25s,background .25s,box-shadow .25s}
+.card:hover{transform:translateY(-4px);border-color:rgba(140,165,255,.32);background:var(--panel-2);box-shadow:0 20px 46px rgba(0,0,0,.3)}
+.icon-box{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;margin-bottom:18px;
+  color:#a9c0ff;background:linear-gradient(140deg,rgba(91,124,250,.24),rgba(160,107,255,.14));border:1px solid rgba(140,165,255,.20)}
+.icon-box svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.card h3{margin:0 0 9px;font-size:17px;letter-spacing:-.01em}
+.card p{margin:0;font-size:13.5px;color:var(--muted);line-height:1.85}
+.card .kicker{display:block;margin-top:14px;font-size:11.5px;color:#7f8db4}
+
+/* ---------- platforms ---------- */
+.plat-wrap{display:grid;grid-template-columns:.82fr 1.18fr;gap:46px;align-items:center}
+.plat-intro h2{margin:14px 0 16px;font-size:clamp(28px,3.4vw,40px);line-height:1.26;letter-spacing:-.02em}
+.plat-intro p{color:var(--muted);font-size:15px;line-height:1.9;margin:0 0 24px}
+.plat-list{display:flex;flex-direction:column;gap:10px}
+.plat-line{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)}
+.plat-line i{font-style:normal;color:#67dba5}
+.plat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.plat{display:flex;align-items:center;gap:15px;padding:20px;border-radius:17px;border:1px solid var(--line);
+  background:var(--panel);transition:transform .22s,border-color .22s}
+.plat:hover{transform:translateY(-3px);border-color:var(--line-strong)}
+.plat-logo{width:46px;height:46px;flex:none;border-radius:13px;display:grid;place-items:center;font-weight:800;font-size:19px;color:#fff;letter-spacing:-.04em}
+.p-douyu{background:linear-gradient(140deg,#ff8a4c,#f2542d)}
+.p-huya{background:linear-gradient(140deg,#ffb43c,#ff7a16)}
+.p-bili{background:linear-gradient(140deg,#68c6ff,#f47fb4)}
+.p-douyin{background:linear-gradient(140deg,#3a4560,#101828);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
+.plat h4{margin:0 0 3px;font-size:15.5px}
+.plat p{margin:0;font-size:12px;color:var(--dim)}
+.plat-note{margin-top:16px;font-size:12px;color:var(--dim);text-align:right}
+
+/* ---------- screens ---------- */
+.tabs{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:22px}
+.tab{padding:9px 16px;border-radius:99px;font-size:13px;color:var(--muted);background:rgba(255,255,255,.04);
+  border:1px solid var(--line);transition:.2s}
+.tab:hover{color:var(--txt)}
+.tab.on{color:#fff;border-color:rgba(140,165,255,.5);background:linear-gradient(135deg,rgba(91,124,250,.30),rgba(160,107,255,.24))}
+.screen-grid{display:grid;grid-template-columns:1fr 230px;gap:26px;align-items:center}
+.screen-tv{border-radius:16px;padding:8px;background:linear-gradient(150deg,#1a2238,#0a0f1e);border:1px solid var(--line-strong);
+  box-shadow:0 30px 70px rgba(0,0,0,.5);cursor:zoom-in}
+.screen-tv .box{border-radius:10px;overflow:hidden;aspect-ratio:16/9;background:#0b1020}
+.screen-tv img,.screen-phone img{width:100%;height:100%;object-fit:cover;display:block;animation:fade .45s ease}
+@keyframes fade{from{opacity:.35}to{opacity:1}}
+.screen-phone{width:100%;border-radius:26px;padding:6px;background:linear-gradient(150deg,#293350,#0e1424);
+  border:1px solid rgba(255,255,255,.16);box-shadow:0 24px 48px rgba(0,0,0,.5);cursor:zoom-in}
+.screen-phone .box{border-radius:20px;overflow:hidden;aspect-ratio:420/923;background:#080b14}
+.screen-caption{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px 20px;align-items:baseline}
+.screen-caption h3{margin:0;font-size:18px}
+.screen-caption p{margin:0;color:var(--muted);font-size:13.5px;flex:1;min-width:260px}
+
+/* ---------- download ---------- */
+.dl-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.dl-card{position:relative;overflow:hidden;padding:30px;border-radius:24px;border:1px solid var(--line);
+  background:linear-gradient(165deg,rgba(255,255,255,.065),rgba(255,255,255,.025));transition:transform .25s,border-color .25s}
+.dl-card:hover{transform:translateY(-4px);border-color:rgba(140,165,255,.38)}
+.dl-card::before{content:"";position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,var(--brand),var(--brand-2),transparent)}
+.dl-card.tv::before{background:linear-gradient(90deg,var(--cyan),var(--brand),transparent)}
+.dl-top{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.dl-icon{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;flex:none;
+  background:linear-gradient(140deg,rgba(91,124,250,.26),rgba(160,107,255,.14));border:1px solid rgba(140,165,255,.24);color:#b6c9ff}
+.dl-card.tv .dl-icon{background:linear-gradient(140deg,rgba(76,216,232,.20),rgba(91,124,250,.16));color:#8fe6ef;border-color:rgba(76,216,232,.26)}
+.dl-icon svg{width:28px;height:28px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.dl-top h3{margin:0 0 2px;font-size:21px;letter-spacing:-.01em}
+.dl-top p{margin:0;font-size:12.5px;color:var(--muted)}
+.dl-desc{font-size:13.5px;color:var(--muted);line-height:1.85;margin:0 0 20px;min-height:50px}
+.dl-meta{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 10px;padding:18px 0;margin-bottom:22px;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.dl-meta div span{display:block;font-size:11px;color:var(--dim);margin-bottom:3px}
+.dl-meta div b{font-size:13.5px;font-weight:600;color:#dbe4ff}
+.dl-alt{display:block;margin-top:14px;text-align:center;font-size:12px;color:var(--dim);text-decoration:underline;text-underline-offset:3px}
+.dl-alt:hover{color:var(--muted)}
+.dl-note{margin-top:12px;padding:9px 12px;border-radius:10px;font-size:11.5px;line-height:1.7;color:#d9c08a;
+  background:rgba(214,164,69,.09);border:1px solid rgba(214,164,69,.22)}
+.dl-note[hidden]{display:none}
+.dl-tips{margin:26px 0 0;padding:20px 22px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.025);
+  font-size:13px;color:var(--muted);line-height:1.9}
+.dl-tips b{color:#dbe4ff}
+.dl-tips ol{margin:8px 0 0;padding-left:20px}
+.dl-tips li{margin:2px 0}
+
+/* ---------- updates ---------- */
+.up-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.up-card{padding:26px;border-radius:var(--r);border:1px solid var(--line);background:var(--panel)}
+.up-head{display:flex;align-items:center;gap:11px;margin-bottom:18px}
+.up-dot{width:9px;height:9px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 5px rgba(91,124,250,.15)}
+.up-card.tv .up-dot{background:var(--cyan);box-shadow:0 0 0 5px rgba(76,216,232,.13)}
+.up-head h3{margin:0;font-size:16px}
+.up-head span{margin-left:auto;font-size:12px;color:var(--dim)}
+.up-card ul{margin:0;padding:0;list-style:none}
+.up-card li{position:relative;padding-left:18px;margin:11px 0;font-size:13.5px;color:var(--muted);line-height:1.75}
+.up-card li::before{content:"";position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:50%;background:#6178c9}
+.up-card.tv li::before{background:#3f97a8}
+
+/* ---------- faq ---------- */
+.faq{max-width:860px;margin-inline:auto}
+.faq details{border:1px solid var(--line);border-radius:15px;background:var(--panel);margin-bottom:11px;padding:0 20px}
+.faq summary{padding:17px 0;font-size:14.5px;font-weight:600;cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:20px;font-weight:400;color:#8fa4e8;line-height:1}
+.faq details[open] summary::after{content:"−"}
+.faq details p{margin:0 0 18px;font-size:13.5px;color:var(--muted);line-height:1.9}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);padding:44px 0 54px;margin-top:40px;background:rgba(4,7,14,.6)}
+.foot-top{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center}
+.foot-links{display:flex;gap:20px;font-size:13px;color:var(--muted)}
+.foot-links a:hover{color:var(--txt)}
+.disclaimer{margin-top:26px;padding-top:22px;border-top:1px solid var(--line);font-size:12px;color:var(--dim);line-height:2}
+.copyright{margin-top:12px;font-size:12px;color:#5c6884}
+
+/* ---------- toast & lightbox ---------- */
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,18px);z-index:90;opacity:0;pointer-events:none;
+  padding:12px 20px;border-radius:12px;font-size:13px;background:rgba(20,28,48,.96);border:1px solid var(--line-strong);
+  box-shadow:0 18px 40px rgba(0,0,0,.5);transition:.28s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.lightbox{position:fixed;inset:0;z-index:100;display:none;place-items:center;padding:4vw;background:rgba(3,5,12,.9);backdrop-filter:blur(6px)}
+.lightbox.on{display:grid}
+.lightbox img{max-width:min(1100px,94vw);max-height:88vh;object-fit:contain;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.7)}
+.lightbox .close{position:absolute;top:22px;right:26px;width:40px;height:40px;border-radius:50%;border:1px solid var(--line-strong);
+  background:rgba(255,255,255,.06);color:#fff;font-size:22px;line-height:1}
+
+/* ---------- responsive ---------- */
+@media(max-width:1000px){
+  .hero-grid{grid-template-columns:minmax(0,1fr);gap:52px}
+  .hero-visual{max-width:660px;width:100%;margin-inline:auto}
+  .plat-wrap{grid-template-columns:1fr;gap:30px}
+  .grid-3{grid-template-columns:repeat(2,1fr)}
+  .screen-grid{grid-template-columns:1fr 190px}
+}
+@media(max-width:760px){
+  html{scroll-padding-top:72px}
+  .wrap{width:min(var(--wrap),calc(100% - 32px))}
+  .nav-links{display:none}
+  .nav-cta{margin-left:auto}
+  .hero{padding-top:48px}
+  .sec{padding:66px 0}
+  .hero h1{font-size:clamp(30px,8.2vw,40px);letter-spacing:-.025em}
+  .hero-actions .btn{width:100%;flex-wrap:wrap;white-space:normal;gap:2px 9px;padding:13px 16px}
+  .hero-actions .btn span{width:100%;display:block;text-align:center}
+  .hero-visual{padding:8px 8px 40px 0}
+  .tv-frame{transform:none}
+  .chip{font-size:10.5px;padding:7px 10px}
+  .chip-a{left:0}
+  .chip-b{right:2px}
+  .phone-frame{right:-2px;bottom:0}
+  .stats{grid-template-columns:repeat(2,1fr);margin-top:44px}
+  .stat:nth-child(2){border-right:0}
+  .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .stat b{font-size:25px}
+  .grid-3,.dl-grid,.up-grid,.plat-grid{grid-template-columns:1fr}
+  .screen-grid{grid-template-columns:1fr}
+  .screen-phone{display:none}
+  .sec-head h2{font-size:28px}
+  .dl-card{padding:24px}
+  .dl-desc{min-height:0}
+  .foot-top{flex-direction:column;align-items:flex-start}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div class="bg"></div><div class="bg-grid"></div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top"><img src="assets/logo.png" alt="聚视图标"><span>聚视<small>JUSHI</small></span></a>
+    <nav class="nav-links">
+      <a href="#features">功能</a>
+      <a href="#platforms">直播平台</a>
+      <a href="#screens">界面预览</a>
+      <a href="#updates">最近更新</a>
+    </nav>
+    <a class="nav-cta" href="#download">立即下载</a>
+  </div>
+</header>
+
+<main id="top">
+  <!-- hero -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse"></span>Android 手机 · Android TV 双端可用</div>
+        <h1><span class="l1">影视、电视台、直播</span><span class="grad l2">一个 App 就够了</span></h1>
+        <p class="lede">聚视把影视点播、电视频道，和斗鱼 / 虎牙 / B站 / 抖音 的平台直播放进同一个入口。手机上随手看，回家用电视接着看；安装包轻巧，老设备也跑得动。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" data-dl="phone" href="https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/public/JuShi-v2.4.2-public.apk">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+            下载手机版 <span>v2.4.2 · 约 49 MB</span>
+          </a>
+          <a class="btn btn-ghost" data-dl="tv" href="https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.16-arm64.apk">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            下载电视版 <span>v1.12.16 · 约 16 MB</span>
+          </a>
+        </div>
+        <div class="hero-meta"><span><i>✓</i>免费使用</span><span><i>✓</i>应用内检查更新</span><span><i>✓</i>不内置任何影视内容</span></div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="tv-frame">
+          <div class="tv-screen"><img src="assets/tv-home.webp" alt="聚视电视端影视首页界面"></div>
+          <div class="tv-stand"></div>
+        </div>
+        <div class="phone-frame"><img src="assets/phone-home.webp" alt="聚视手机版影视首页界面"></div>
+        <div class="chip chip-a"><b>4</b> 大平台直播</div>
+        <div class="chip chip-b">TV 版仅约 <b>16 MB</b></div>
+      </div>
+    </div>
+
+    <div class="wrap stats reveal">
+      <div class="stat"><b>4 大</b><span>斗鱼 / 虎牙 / B站 / 抖音直播</span></div>
+      <div class="stat"><b>3 类</b><span>影视 · 电视台 · 平台直播</span></div>
+      <div class="stat"><b>约 16 MB</b><span>电视版安装包，轻量不臃肿</span></div>
+      <div class="stat"><b>双端</b><span>手机与电视，同一套体验</span></div>
+    </div>
+  </section>
+
+  <!-- features -->
+  <section class="sec" id="features">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <div class="tag">FEATURES</div>
+        <h2>想看什么，打开就能找到</h2>
+        <p>点播、频道、直播三件事，不用在几个 App 之间来回跳。</p>
+      </div>
+      <div class="grid-3">
+        <div class="card reveal">
+          <div class="icon-box"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="m10 8 5 3-5 3V8Z"/></svg></div>
+          <h3>影视点播</h3>
+          <p>一起看、豆瓣热榜、AI看剧多个片单，支持聚合搜索、分类筛选、多源切换与跨源找片，选集、倍速、画面比例随手调。</p>
+          <span class="kicker">一起看 · 热榜 · 聚合搜索</span>
+        </div>
+        <div class="card reveal">
+          <div class="icon-box"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="m8 3 4 3 4-3M8 12h8M8 16h5"/></svg></div>
+          <h3>电视台直播</h3>
+          <p>内置精选频道清单，也支持自建 M3U / TXT 订阅；频道分组、同名频道互为备用，线路卡顿会自动往下切，尽量不打断观看。</p>
+          <span class="kicker">频道分组 · 自动换源 · 台标</span>
+        </div>
+        <div class="card reveal">
+          <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M4 7h16M5 7l1.4 12h11.2L19 7M9 11v5M15 11v5"/><circle cx="12" cy="4" r="1.5"/></svg></div>
+          <h3>平台直播</h3>
+          <p>斗鱼、虎牙、B站、抖音一个入口浏览：按分区找房间、按主播名搜索，登录后还能看关注，直播画面支持弹幕叠加。</p>
+          <span class="kicker">分区浏览 · 房间搜索 · 弹幕</span>
+        </div>
+        <div class="card reveal">
+          <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg></div>
+          <h3>轻量安装</h3>
+          <p>电视版为原生实现，安装包约 16 MB，装完即用；遥控器方向键 + OK 就能走完所有页面，老盒子也不吃力。</p>
+          <span class="kicker">原生实现 · 遥控器优先</span>
+        </div>
+        <div class="card reveal">
+          <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v4h-4M12 8v4l3 2"/></svg></div>
+          <h3>应用内更新</h3>
+          <p>启动时静默检查一次新版本，有更新直接在 App 里下载安装，不用再回来找链接；设置页也能手动检查。</p>
+          <span class="kicker">增量提醒 · 一键安装</span>
+        </div>
+        <div class="card reveal">
+          <div class="icon-box"><svg viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 21h8M12 17v4M7 9h5M7 12h3"/></svg></div>
+          <h3>手机电视各顺手</h3>
+          <p>手机版适配竖屏与大屏手势，支持投屏、长按倍速、定时关闭；电视版专注大屏浏览与遥控操作，两端功能基本一致。</p>
+          <span class="kicker">投屏 · 倍速 · 定时关闭</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- platforms -->
+  <section class="sec" id="platforms">
+    <div class="wrap plat-wrap">
+      <div class="plat-intro reveal">
+        <div class="tag">LIVE PLATFORMS</div>
+        <h2>常看的直播间<br><span class="grad">不用再换 App</span></h2>
+        <p>四个平台的直播内容聚合到一处，切平台就像切标签页：分区、搜索、收藏、弹幕，操作习惯保持一致。</p>
+        <div class="plat-list">
+          <div class="plat-line"><i>✓</i>按分区浏览热门房间，也能直接搜主播或房间号</div>
+          <div class="plat-line"><i>✓</i>原生取流 + 网页兜底，尽量保证能播、能连上</div>
+          <div class="plat-line"><i>✓</i>弹幕可叠加在画面上，也能收进列表单独看</div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="plat-grid">
+          <div class="plat"><div class="plat-logo p-douyu">斗</div><div><h4>斗鱼直播</h4><p>游戏 / 娱乐分区 · 房间搜索</p></div></div>
+          <div class="plat"><div class="plat-logo p-huya">虎</div><div><h4>虎牙直播</h4><p>热门赛事 · 高清线路</p></div></div>
+          <div class="plat"><div class="plat-logo p-bili">B</div><div><h4>哔哩哔哩</h4><p>番剧 / 游戏 / 生活区</p></div></div>
+          <div class="plat"><div class="plat-logo p-douyin">抖</div><div><h4>抖音直播</h4><p>分区浏览 · 主播搜索</p></div></div>
+        </div>
+        <div class="plat-note">各端功能随版本迭代，以应用内实际显示为准。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- screens -->
+  <section class="sec" id="screens">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="tag">SCREENS</div>
+        <h2>界面长这样</h2>
+        <p>下面是应用内的真实界面，点标签切换不同模块。</p>
+      </div>
+      <div class="tabs reveal" id="tabs">
+        <button class="tab on" data-i="0">影视首页</button>
+        <button class="tab" data-i="1">影片详情</button>
+        <button class="tab" data-i="2">电视台</button>
+        <button class="tab" data-i="3">平台直播</button>
+      </div>
+      <div class="screen-grid reveal" id="screenGrid">
+        <div>
+          <div class="screen-tv" data-zoom><div class="box"><img id="shotTv" src="assets/tv-home.webp" alt="聚视电视端影视首页界面"></div></div>
+          <div class="screen-caption"><h3 id="shotTitle">影视首页</h3><p id="shotDesc">片单、榜单和分类集中在一屏，遥控器或手指都能快速找到想看的。</p></div>
+        </div>
+        <div class="screen-phone" data-zoom><div class="box"><img id="shotPhone" src="assets/phone-home.webp" alt="聚视手机版对应界面"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- download -->
+  <section class="sec" id="download">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <div class="tag">DOWNLOAD</div>
+        <h2>选择你的屏幕</h2>
+        <p>两端功能基本相同，都是 Android 安装包；按设备选一个就行，也可以都装。</p>
+      </div>
+      <div class="dl-grid">
+        <div class="dl-card reveal">
+          <div class="dl-top">
+            <div class="dl-icon"><svg viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="2.6"/><path d="M10.5 18.5h3"/></svg></div>
+            <div><h3>手机版 · 聚视</h3><p>Android 手机 / 平板</p></div>
+          </div>
+          <p class="dl-desc">竖屏刷片、投屏到大屏、直播弹幕、抖音直播与手势倍速，适合随身带着看。支持应用内更新。</p>
+          <div class="dl-meta">
+            <div><span>当前版本</span><b>v2.4.2</b></div>
+            <div><span>安装包大小</span><b>约 49.4 MB</b></div>
+            <div><span>更新日期</span><b>2026-11-07</b></div>
+            <div><span>适用设备</span><b>Android 手机 / 平板</b></div>
+          </div>
+          <a class="btn btn-primary btn-block" data-dl="phone" href="https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/public/JuShi-v2.4.2-public.apk">下载手机版 APK</a>
+          <a class="dl-alt" id="altPhone" href="#" target="_blank" rel="noopener">备用下载 / 高速镜像 ↗</a>
+        </div>
+
+        <div class="dl-card tv reveal">
+          <div class="dl-top">
+            <div class="dl-icon"><svg viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+            <div><h3>电视版 · 聚视TV</h3><p>Android TV / 电视盒子 / 投影</p></div>
+          </div>
+          <p class="dl-desc">原生大屏界面，遥控器方向键 + OK 全程可操作；约 16 MB 的轻量安装包，开机即用、更新也在应用内完成。</p>
+          <div class="dl-meta">
+            <div><span>当前版本</span><b id="tvVer">v1.12.16</b></div>
+            <div><span>安装包大小</span><b>约 15.6 MB</b></div>
+            <div><span>更新日期</span><b>2026-11-07</b></div>
+            <div><span>适用设备</span><b>Android TV · arm64</b></div>
+          </div>
+          <a class="btn btn-primary btn-block" data-dl="tv" href="https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.16-arm64.apk">下载 TV 版 APK</a>
+          <div class="dl-note" id="tvSyncNote" hidden>最新版 v1.12.16 尚未同步到下载源，当前按钮提供线上稳定版 v1.12.9。</div>
+          <a class="dl-alt" id="altTv" href="#" target="_blank" rel="noopener">备用下载（线上稳定版 v1.12.9）↗</a>
+        </div>
+      </div>
+
+      <div class="dl-tips reveal">
+        <b>安装小提示</b>
+        <ol>
+          <li>点击按钮下载 APK，完成后在通知栏或文件管理器里打开；</li>
+          <li>系统若提示风险，到「设置 → 安全」中允许该来源安装未知应用；</li>
+          <li>电视 / 盒子可通过 U 盘、文件管理器或 ADB 安装，TV 版需 arm64 设备。</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- updates -->
+  <section class="sec" id="updates">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <div class="tag">CHANGELOG</div>
+        <h2>最近更新</h2>
+        <p>两端各自迭代，这里列的是当前可下载版本的主要改动。</p>
+      </div>
+      <div class="up-grid">
+        <div class="up-card reveal">
+          <div class="up-head"><span class="up-dot"></span><h3>手机版 v2.4.2</h3><span>2026-11-07</span></div>
+          <ul>
+            <li>抖音直播支持按主播名 / 直播间名搜索，也可按分区浏览</li>
+            <li>自动识别运营商，按运营商给电视台优选线路</li>
+            <li>电视台内置源与电视端一致，卡住自动换备用源</li>
+            <li>修复小屏下首页海报溢出的问题</li>
+          </ul>
+        </div>
+        <div class="up-card tv reveal">
+          <div class="up-head"><span class="up-dot"></span><h3>电视版 v1.12.16</h3><span>2026-11-07</span></div>
+          <ul>
+            <li>直播搜索：进直播间再返回，搜索结果、搜索框和关键词都不再丢</li>
+            <li>搜索条搜完保持展开，按返回键才收起</li>
+            <li>结果数量与「返回列表」始终可见，接着看 / 接着改都方便</li>
+            <li>原生大屏界面与遥控器操作持续打磨</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- faq -->
+  <section class="sec" id="faq">
+    <div class="wrap">
+      <div class="sec-head center reveal"><div class="tag">FAQ</div><h2>几个常见问题</h2></div>
+      <div class="faq reveal">
+        <details open><summary>安装时被系统拦下怎么办？</summary><p>Android 默认只允许安装应用商店来源的 APK。在系统「设置 → 安全 / 应用安装」里，给浏览器或文件管理器开启「允许安装未知来源应用」，再重新打开下载好的 APK 即可。</p></details>
+        <details><summary>电视上没有浏览器，怎么装 TV 版？</summary><p>常见做法有三种：把 APK 拷到 U 盘插到电视上用文件管理器打开；用当贝助手、电视文件管理器一类的工具从局域网传过去；或者通过 ADB 执行 adb install。TV 版为 arm64 构建，请先确认设备架构。</p></details>
+        <details><summary>App 里的影视和直播内容从哪里来？</summary><p>聚视只提供播放能力与界面聚合，不内置、不存储、不分发任何影视或直播内容。影视源、IPTV 订阅等数据源由使用者自行配置，平台直播内容来自各平台公开页面。请遵守所在地区法律法规与相关平台的服务条款。</p></details>
+        <details><summary>以后还要回来找新版本吗？</summary><p>不用。App 启动时会检查一次更新，发现新版本会提示下载并安装，设置页里也能手动检查。本页的下载入口直接指向官方更新地址。</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <a class="brand" href="#top"><img src="assets/logo.png" alt="聚视图标"><span>聚视<small>JUSHI</small></span></a>
+      <div class="foot-links">
+        <a href="#features">功能</a><a href="#screens">界面预览</a><a href="#download">下载</a><a href="#faq">常见问题</a>
+      </div>
+    </div>
+    <div class="disclaimer">聚视仅提供播放能力与界面聚合，不内置、不存储、不分发任何影视或直播内容；所有数据源由使用者自行配置。页面中的平台名称归各自权利人所有。请遵守所在地区法律法规及第三方平台服务条款。</div>
+    <div class="copyright">© 2026 聚视 · 本页面为应用介绍与下载页</div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+<div class="lightbox" id="lightbox"><button class="close" aria-label="关闭预览">×</button><img id="lightboxImg" src="" alt="界面大图预览"></div>
+
+<script>
+(function(){
+  "use strict";
+  var $ = function(s){return document.querySelector(s);};
+  var $$ = function(s){return Array.prototype.slice.call(document.querySelectorAll(s));};
+
+  /* 下载地址：直接使用官方更新清单里的最新 APK 地址（不随站点托管安装包）。
+     以后发新版，只要改这里的 url / ver；fallback 是最新版还没上传时用的线上稳定版。 */
+  var CDN = "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev";
+  var DL = {
+    phone:{
+      label:"手机版", ver:"v2.4.2",
+      url:CDN + "/public/JuShi-v2.4.2-public.apk",
+      mirror:CDN + "/public/JuShi-v2.4.2-public.apk"
+    },
+    tv:{
+      label:"电视版", ver:"v1.12.16",
+      url:CDN + "/tv/JuShiTV-TV-v1.12.16-arm64.apk",
+      fallback:CDN + "/tv/JuShiTV-TV-v1.12.9-arm64.apk",
+      fallbackVer:"v1.12.9",
+      mirror:CDN + "/tv/JuShiTV-TV-v1.12.9-arm64.apk"
+    }
+  };
+
+  var toastTimer;
+  function toast(msg){
+    var el = $("#toast");
+    el.textContent = msg;
+    el.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){el.classList.remove("show");}, 2800);
+  }
+
+  $$("[data-dl]").forEach(function(a){
+    var d = DL[a.getAttribute("data-dl")];
+    if(!d) return;
+    a.setAttribute("href", d.url);
+    a.addEventListener("click", function(){toast("开始下载 聚视" + d.label + " " + d.ver);});
+  });
+  $("#altPhone").href = DL.phone.mirror;
+  $("#altTv").href = DL.tv.mirror;
+
+  /* 最新版还没同步到下载源时，自动退到线上确实可下载的版本，避免按钮点了是 404。
+     一旦 v1.12.16 上传完成，检测通过就继续用最新链接，页面不用改。 */
+  if(DL.tv.fallback && window.fetch){
+    fetch(DL.tv.url, {method:"HEAD", mode:"cors", cache:"no-store"})
+      .then(function(r){ if(!r.ok) throw new Error("not uploaded"); })
+      .catch(function(){
+        DL.tv.url = DL.tv.fallback;
+        DL.tv.ver = DL.tv.fallbackVer;
+        $$("[data-dl='tv']").forEach(function(a){a.setAttribute("href", DL.tv.fallback);});
+        var v = document.getElementById("tvVer"); if(v) v.textContent = DL.tv.fallbackVer;
+        var n = document.getElementById("tvSyncNote"); if(n) n.hidden = false;
+      });
+  }
+
+  /* 滚动中的导航条 */
+  function onScroll(){ $(".nav").classList.toggle("scrolled", window.scrollY > 12); }
+  window.addEventListener("scroll", onScroll, {passive:true});
+  onScroll();
+
+  /* 入场动画 */
+  if("IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, {threshold:0.08, rootMargin:"0px 0px -30px 0px"});
+    $$(".reveal").forEach(function(el){io.observe(el);});
+  }else{
+    $$(".reveal").forEach(function(el){el.classList.add("in");});
+  }
+
+  /* 界面预览切换 */
+  var scenes = [
+    {t:"影视首页", d:"片单、榜单和分类集中在一屏，遥控器或手指都能快速找到想看的。", tv:"assets/tv-home.webp", ph:"assets/phone-home.webp"},
+    {t:"影片详情", d:"简介、评分、播放源与选集一页看完，找片到开播不用反复跳转。", tv:"assets/tv-detail.webp", ph:"assets/phone-player.webp"},
+    {t:"电视台", d:"频道列表 + 播放信息浮层，切台、换线路、看频道列表都很直接。", tv:"assets/tv-iptv.webp", ph:"assets/phone-live.webp"},
+    {t:"平台直播", d:"斗鱼 / 虎牙 / B站 / 抖音 按分区浏览，热度、房间和封面一目了然。", tv:"assets/tv-live.webp", ph:"assets/phone-live.webp"}
+  ];
+  var current = 0, timer = null;
+  function show(i){
+    current = i;
+    var s = scenes[i];
+    $("#shotTv").src = s.tv;
+    $("#shotPhone").src = s.ph;
+    $("#shotTitle").textContent = s.t;
+    $("#shotDesc").textContent = s.d;
+    $$(".tab").forEach(function(b,j){b.classList.toggle("on", j === i);});
+  }
+  $$(".tab").forEach(function(b){
+    b.addEventListener("click", function(){show(parseInt(b.getAttribute("data-i"),10)); restart();});
+  });
+  function restart(){
+    if(timer) clearInterval(timer);
+    if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    timer = setInterval(function(){show((current+1) % scenes.length);}, 5200);
+  }
+  var grid = $("#screenGrid");
+  grid.addEventListener("mouseenter", function(){if(timer){clearInterval(timer);timer=null;}});
+  grid.addEventListener("mouseleave", restart);
+  restart();
+
+  /* 点击截图放大 */
+  var lb = $("#lightbox");
+  $$("[data-zoom]").forEach(function(el){
+    el.addEventListener("click", function(){
+      var img = el.querySelector("img");
+      $("#lightboxImg").src = img.src;
+      $("#lightboxImg").alt = img.alt;
+      lb.classList.add("on");
+    });
+  });
+  lb.addEventListener("click", function(){lb.classList.remove("on");});
+  document.addEventListener("keydown", function(e){if(e.key === "Escape") lb.classList.remove("on");});
+})();
+</script>
+</body>
+</html>
