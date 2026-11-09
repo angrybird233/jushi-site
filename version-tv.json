@@ -1,11 +1,11 @@
 {
-  "version": "1.12.19",
-  "versionCode": 51,
-  "apkUrl": "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.19-arm64.apk",
+  "version": "1.12.20",
+  "versionCode": 52,
+  "apkUrl": "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.20-arm64.apk",
   "apkUrlFallback": "",
-  "notes": "修复 1.12.18 抖音直播卡在转圈，装过务必更新\n影视/直播列表加缓存；AI看剧补全片单模块与分类入口\n详情页集数分页与骨架屏；修复页签聚焦、直播音频增强",
+  "notes": "全新「聚视TV」图标，电视与手机/平板显示统一\n更新检查更快更稳：按实测速度选主源，并自动交叉校验",
   "force": false,
-  "publishedAt": "2026-11-09T11:57:24+08:00",
-  "size": 16332914,
+  "publishedAt": "2026-11-09T15:21:31+08:00",
+  "size": 16528049,
   "runtime": "native"
 }
