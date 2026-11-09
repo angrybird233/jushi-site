@@ -84,8 +84,8 @@ button{font:inherit;cursor:pointer}
 .btn-block{width:100%}
 .ico{width:18px;height:18px;flex:none}
 section{position:relative}
-.sec{padding:92px 0}
-.sec-head{margin-bottom:44px}
+.sec{padding:60px 0}
+.sec-head{margin-bottom:30px}
 .sec-head.center{text-align:center}
 .sec-head h2{margin:14px 0 12px;font-size:clamp(28px,3.4vw,40px);line-height:1.24;letter-spacing:-.02em}
 .sec-head p{margin:0;color:var(--muted);font-size:15px;max-width:660px}
@@ -95,7 +95,7 @@ section{position:relative}
 .reveal.in{opacity:1;transform:none}
 
 /* ---------- hero ---------- */
-.hero{padding:78px 0 0}
+.hero{padding:62px 0 0}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,1.08fr);gap:44px;align-items:center}
 .hero-grid>*{min-width:0}
 .hero h1{margin:22px 0 20px;font-size:clamp(38px,4.8vw,62px);line-height:1.13;letter-spacing:-.035em;font-weight:800}
@@ -127,7 +127,7 @@ section{position:relative}
 .chip-b{right:-4px;bottom:16%;animation:float 7s ease-in-out infinite reverse}
 @keyframes float{50%{transform:translateY(-9px)}}
 
-.stats{margin-top:64px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats{margin-top:44px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .stat{padding:24px 18px;text-align:center;border-right:1px solid var(--line)}
 .stat:last-child{border-right:0}
 .stat b{display:block;font-size:30px;line-height:1.2;letter-spacing:-.02em;
@@ -167,23 +167,35 @@ section{position:relative}
 .plat-note{margin-top:16px;font-size:12px;color:var(--dim);text-align:right}
 
 /* ---------- screens ---------- */
-.tabs{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:22px}
+.screen-toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}
+.tabs{display:flex;flex-wrap:wrap;gap:9px}
 .tab{padding:9px 16px;border-radius:99px;font-size:13px;color:var(--muted);background:rgba(255,255,255,.04);
   border:1px solid var(--line);transition:.2s}
 .tab:hover{color:var(--txt)}
 .tab.on{color:#fff;border-color:rgba(140,165,255,.5);background:linear-gradient(135deg,rgba(91,124,250,.30),rgba(160,107,255,.24))}
-.screen-grid{display:grid;grid-template-columns:1fr 230px;gap:26px;align-items:center}
-.screen-tv{border-radius:16px;padding:8px;background:linear-gradient(150deg,#1a2238,#0a0f1e);border:1px solid var(--line-strong);
-  box-shadow:0 30px 70px rgba(0,0,0,.5);cursor:zoom-in}
-.screen-tv .box{border-radius:10px;overflow:hidden;aspect-ratio:16/9;background:#0b1020}
-.screen-tv img,.screen-phone img{width:100%;height:100%;object-fit:cover;display:block;animation:fade .45s ease}
+.dev-switch{display:flex;gap:4px;padding:4px;border-radius:99px;border:1px solid var(--line);background:rgba(255,255,255,.03)}
+.dev-btn{display:inline-flex;align-items:center;gap:7px;padding:7px 14px;border:0;border-radius:99px;
+  font-size:12.5px;color:var(--muted);background:transparent;cursor:pointer;transition:.2s;white-space:nowrap}
+.dev-btn svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.dev-btn:hover{color:var(--txt)}
+.dev-btn.on{color:#fff;background:linear-gradient(135deg,rgba(91,124,250,.42),rgba(160,107,255,.32));
+  box-shadow:0 2px 10px rgba(91,124,250,.18)}
+.screen-grid{max-width:900px;margin-inline:auto;transition:max-width .3s ease}
+.screen-grid.is-phone-view{max-width:560px}
+.screen-stage{position:relative;border-radius:16px;padding:8px;background:linear-gradient(150deg,#1a2238,#0a0f1e);
+  border:1px solid var(--line-strong);box-shadow:0 30px 70px rgba(0,0,0,.5);cursor:zoom-in;transition:width .3s ease}
+.screen-stage .box{border-radius:10px;overflow:hidden;background:#0b1020}
+.screen-stage img{width:100%;height:100%;object-fit:cover;display:block;animation:fade .45s ease}
 @keyframes fade{from{opacity:.35}to{opacity:1}}
-.screen-phone{width:100%;border-radius:26px;padding:6px;background:linear-gradient(150deg,#293350,#0e1424);
-  border:1px solid rgba(255,255,255,.16);box-shadow:0 24px 48px rgba(0,0,0,.5);cursor:zoom-in}
-.screen-phone .box{border-radius:20px;overflow:hidden;aspect-ratio:420/923;background:#080b14}
+.screen-stage.is-tv{width:100%}
+.screen-stage.is-tv .box{aspect-ratio:16/9}
+.screen-stage.is-phone{width:min(320px,74%);margin-inline:auto;border-radius:30px;padding:6px;
+  background:linear-gradient(150deg,#293350,#0e1424);border:1px solid rgba(255,255,255,.16)}
+.screen-stage.is-phone .box{aspect-ratio:600/1067;border-radius:24px}
 .screen-caption{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px 20px;align-items:baseline}
 .screen-caption h3{margin:0;font-size:18px}
 .screen-caption p{margin:0;color:var(--muted);font-size:13.5px;flex:1;min-width:260px}
+.dev-hint{font-size:12px;color:var(--dim);white-space:nowrap}
 
 /* ---------- download ---------- */
 .dl-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
@@ -211,7 +223,7 @@ section{position:relative}
   background:rgba(214,164,69,.09);border:1px solid rgba(214,164,69,.22)}
 .dl-note[hidden]{display:none}
 .dl-note a{color:#f0d59b;text-decoration:underline;text-underline-offset:2px}
-.dl-tips{margin:26px 0 0;padding:20px 22px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.025);
+.dl-tips{margin:20px 0 0;padding:20px 22px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.025);
   font-size:13px;color:var(--muted);line-height:1.9}
 .dl-tips b{color:#dbe4ff}
 .dl-tips a{color:#8fb4ff;text-decoration:underline;text-underline-offset:3px}
@@ -228,7 +240,7 @@ section{position:relative}
 .faq details p{margin:0 0 18px;font-size:13.5px;color:var(--muted);line-height:1.9}
 
 /* ---------- footer ---------- */
-footer{border-top:1px solid var(--line);padding:44px 0 54px;margin-top:40px;background:rgba(4,7,14,.6)}
+footer{border-top:1px solid var(--line);padding:34px 0 40px;margin-top:0;background:rgba(4,7,14,.6)}
 .foot-top{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center}
 .foot-links{display:flex;gap:20px;font-size:13px;color:var(--muted)}
 .foot-links a:hover{color:var(--txt)}
@@ -252,15 +264,16 @@ footer{border-top:1px solid var(--line);padding:44px 0 54px;margin-top:40px;back
   .hero-visual{max-width:660px;width:100%;margin-inline:auto}
   .plat-wrap{grid-template-columns:1fr;gap:30px}
   .grid-3{grid-template-columns:repeat(2,1fr)}
-  .screen-grid{grid-template-columns:1fr 190px}
+  .screen-stage.is-phone{width:min(290px,72%)}
 }
 @media(max-width:760px){
   html{scroll-padding-top:72px}
   .wrap{width:min(var(--wrap),calc(100% - 32px))}
   .nav-links{display:none}
   .nav-cta{margin-left:auto}
-  .hero{padding-top:48px}
-  .sec{padding:66px 0}
+  .hero{padding-top:40px}
+  .sec{padding:44px 0}
+  .sec-head{margin-bottom:26px}
   .hero h1{font-size:clamp(30px,8.2vw,40px);letter-spacing:-.025em}
   .hero-actions .btn{width:100%;flex-wrap:wrap;white-space:normal;gap:2px 9px;padding:13px 16px}
   .hero-actions .btn span{width:100%;display:block;text-align:center}
@@ -270,13 +283,16 @@ footer{border-top:1px solid var(--line);padding:44px 0 54px;margin-top:40px;back
   .chip-a{left:0}
   .chip-b{right:2px}
   .phone-frame{right:-2px;bottom:0}
-  .stats{grid-template-columns:repeat(2,1fr);margin-top:44px}
+  .stats{grid-template-columns:repeat(2,1fr);margin-top:32px}
   .stat:nth-child(2){border-right:0}
   .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
   .stat b{font-size:25px}
   .grid-3,.dl-grid,.plat-grid{grid-template-columns:1fr}
-  .screen-grid{grid-template-columns:1fr}
-  .screen-phone{display:none}
+  .screen-toolbar{flex-direction:column;align-items:stretch}
+  .dev-switch{justify-content:center}
+  .dev-btn{flex:1;justify-content:center}
+  .screen-stage.is-phone{width:min(300px,86%)}
+  .dev-hint{flex-basis:100%;white-space:normal}
   .sec-head h2{font-size:28px}
   .dl-card{padding:24px}
   .dl-desc{min-height:0}
@@ -321,7 +337,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 54px;margin-top:40px;back
             下载电视版 <span id="heroTvMeta">v1.12.17 · 约 15.6 MB</span>
           </a>
         </div>
-        <div class="hero-meta"><span><i>✓</i>免费使用</span><span><i>✓</i>应用内检查更新</span><span><i>✓</i>不内置任何影视内容</span></div>
+        <div class="hero-meta"><span><i>✓</i>免费使用</span><span><i>✓</i>应用内检查更新</span><span><i>✓</i>可以任意添加影视源内容</span></div>
       </div>
 
       <div class="hero-visual">
@@ -423,19 +439,30 @@ footer{border-top:1px solid var(--line);padding:44px 0 54px;margin-top:40px;back
       <div class="sec-head reveal">
         <div class="tag">SCREENS</div>
         <h2>界面长这样</h2>
-        <p>下面是应用内的真实界面，点标签切换不同模块。</p>
+        <p>真实界面截图，点标签切换模块，也能自由切换手机 / 电视端查看。</p>
       </div>
-      <div class="tabs reveal" id="tabs">
-        <button class="tab on" data-i="0">影视首页</button>
-        <button class="tab" data-i="1">电视台</button>
-        <button class="tab" data-i="2">平台直播</button>
+      <div class="screen-toolbar reveal">
+        <div class="tabs" id="tabs">
+          <button class="tab on" data-i="0">影视首页</button>
+          <button class="tab" data-i="1">电视台</button>
+          <button class="tab" data-i="2">平台直播</button>
+        </div>
+        <div class="dev-switch" id="devSwitch" role="group" aria-label="切换预览设备">
+          <button class="dev-btn" data-dev="phone" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.2"/><path d="M11 18.5h2"/></svg>手机版</button>
+          <button class="dev-btn on" data-dev="tv" aria-pressed="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>电视端</button>
+        </div>
       </div>
       <div class="screen-grid reveal" id="screenGrid">
-        <div>
-          <div class="screen-tv" data-zoom><div class="box"><img id="shotTv" src="assets/tv-home.webp" alt="聚视电视端影视首页界面"></div></div>
-          <div class="screen-caption"><h3 id="shotTitle">影视首页</h3><p id="shotDesc">片单、榜单和分类集中在一屏，遥控器或手指都能快速找到想看的。</p></div>
+        <div class="screen-stage is-tv" data-zoom id="screenStage">
+          <div class="box"><img id="shotMain" src="assets/tv-home.webp" alt="聚视电视端影视首页界面"></div>
         </div>
-        <div class="screen-phone" data-zoom><div class="box"><img id="shotPhone" src="assets/phone-home.webp" alt="聚视手机版对应界面"></div></div>
+        <div class="screen-caption">
+          <h3 id="shotTitle">影视首页</h3>
+          <p id="shotDesc">片单、榜单和分类集中在一屏，遥控器或手指都能快速找到想看的。</p>
+          <span class="dev-hint" id="devHint">当前显示：电视端（自动）</span>
+        </div>
       </div>
     </div>
   </section>
@@ -718,24 +745,52 @@ footer{border-top:1px solid var(--line);padding:44px 0 54px;margin-top:40px;back
     $$(".reveal").forEach(function(el){el.classList.add("in");});
   }
 
-  /* 界面预览切换 */
+  /* 界面预览：三个场景 + 手机 / 电视端切换
+     默认按视口宽度自动选择：≤760px 显示手机截图，更宽的窗口显示电视截图；
+     点过设备按钮后以手动选择为准，窗口缩放不再覆盖，刷新页面恢复自动。 */
   var scenes = [
     {t:"影视首页", d:"片单、榜单和分类集中在一屏，遥控器或手指都能快速找到想看的。", tv:"assets/tv-home.webp", ph:"assets/phone-home.webp"},
-    {t:"电视台", d:"频道列表 + 播放信息浮层，切台、换线路、看频道列表都很直接。", tv:"assets/tv-iptv.webp", ph:"assets/phone-live.webp"},
+    {t:"电视台", d:"频道列表 + 播放信息浮层，切台、换线路、看频道列表都很直接。", tv:"assets/tv-cctv.webp", ph:"assets/phone-cctv.webp"},
     {t:"平台直播", d:"斗鱼 / 虎牙 / B站 / 抖音 按分区浏览，热度、房间和封面一目了然。", tv:"assets/tv-live.webp", ph:"assets/phone-live.webp"}
   ];
-  var current = 0, timer = null;
+  var DEV_BP = 760, manualDev = null, current = 0, timer = null, shownDev = null;
+  function autoDev(){ return window.innerWidth <= DEV_BP ? "phone" : "tv"; }
+  function dev(){ return manualDev || autoDev(); }
+  function preload(d){
+    scenes.forEach(function(s){var im = new Image(); im.src = (d === "tv" ? s.tv : s.ph);});
+  }
   function show(i){
     current = i;
-    var s = scenes[i];
-    $("#shotTv").src = s.tv;
-    $("#shotPhone").src = s.ph;
+    var s = scenes[i], d = dev();
+    if(d !== shownDev){ preload(d); shownDev = d; }
+    var img = $("#shotMain");
+    img.src = (d === "tv" ? s.tv : s.ph);
+    img.alt = "聚视" + (d === "tv" ? "电视端" : "手机版") + s.t + "界面";
+    img.style.animation = "none";
+    void img.offsetHeight;
+    img.style.animation = "";
+    var stage = $("#screenStage"), gridEl = $("#screenGrid");
+    stage.classList.toggle("is-tv", d === "tv");
+    stage.classList.toggle("is-phone", d === "phone");
+    gridEl.classList.toggle("is-phone-view", d === "phone");
     $("#shotTitle").textContent = s.t;
     $("#shotDesc").textContent = s.d;
+    $("#devHint").textContent = "当前显示：" + (d === "tv" ? "电视端" : "手机版") + (manualDev ? "（手动）" : "（自动）");
     $$(".tab").forEach(function(b,j){b.classList.toggle("on", j === i);});
+    $$(".dev-btn").forEach(function(b){
+      var on = b.getAttribute("data-dev") === d;
+      b.classList.toggle("on", on);
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+    });
   }
   $$(".tab").forEach(function(b){
     b.addEventListener("click", function(){show(parseInt(b.getAttribute("data-i"),10)); restart();});
+  });
+  $$(".dev-btn").forEach(function(b){
+    b.addEventListener("click", function(){
+      manualDev = b.getAttribute("data-dev");
+      show(current); restart();
+    });
   });
   function restart(){
     if(timer) clearInterval(timer);
@@ -745,7 +800,16 @@ footer{border-top:1px solid var(--line);padding:44px 0 54px;margin-top:40px;back
   var grid = $("#screenGrid");
   grid.addEventListener("mouseenter", function(){if(timer){clearInterval(timer);timer=null;}});
   grid.addEventListener("mouseleave", restart);
+  var rzTimer;
+  window.addEventListener("resize", function(){
+    if(manualDev) return;
+    clearTimeout(rzTimer);
+    rzTimer = setTimeout(function(){show(current);}, 160);
+  });
+  show(0);
   restart();
+  /* 首屏只加载当前设备的截图，空闲后再补齐另一端，手动切换就能秒开 */
+  setTimeout(function(){ preload(dev() === "tv" ? "phone" : "tv"); }, 1200);
 
   /* 点击截图放大 */
   var lb = $("#lightbox");

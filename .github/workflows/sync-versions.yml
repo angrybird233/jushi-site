@@ -1,11 +1,13 @@
 name: 每日同步版本清单（兜底快照）
 
-# 每天 UTC 01:23（北京时间 09:23）跑一次，把 Gitee 更新源的两个 json
+# 每天 24:00（北京时间 00:00）跑一次，把 Gitee 更新源的两个 json
 # 同步到仓库根目录。页面优先读 Gitee 实时接口，接口不可达时读这份同源快照。
 # 仓库若用「Deploy from a branch」部署 Pages，本次提交会自动触发站点重新构建。
+# 注意：GitHub Actions 的 cron 一律按 UTC 解释，北京时间 00:00 = UTC 16:00。
+#       若想改成 UTC 00:00 运行，把下面改成 '0 0 * * *' 即可。
 on:
   schedule:
-    - cron: '23 1 * * *'
+    - cron: '0 16 * * *'
   workflow_dispatch:
 
 permissions:
