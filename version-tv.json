@@ -1,11 +1,11 @@
 {
-  "version": "1.12.20",
-  "versionCode": 52,
-  "apkUrl": "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.20-arm64.apk",
+  "version": "1.12.21",
+  "versionCode": 53,
+  "apkUrl": "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.21-arm64.apk",
   "apkUrlFallback": "",
-  "notes": "全新「聚视TV」图标，电视与手机/平板显示统一\n更新检查更快更稳：按实测速度选主源，并自动交叉校验",
+  "notes": "抖音直播间支持实时弹幕：无需登录，只显示文字弹幕（自动过滤进场、礼物、点赞等）  \n「我的关注」进入直播间也能看到弹幕  \n修复斗鱼「全部分类」弹窗滚动错位，选中靠后分类后分类栏正确高亮",
   "force": false,
-  "publishedAt": "2026-11-09T15:21:31+08:00",
-  "size": 16528049,
+  "publishedAt": "2026-11-10T13:54:38+08:00",
+  "size": 16568687,
   "runtime": "native"
 }
