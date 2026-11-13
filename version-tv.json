@@ -1,11 +1,11 @@
 {
-  "version": "1.12.21",
-  "versionCode": 53,
-  "apkUrl": "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.21-arm64.apk",
+  "version": "1.12.24",
+  "versionCode": 56,
+  "apkUrl": "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.24-arm64.apk",
   "apkUrlFallback": "",
-  "notes": "抖音直播间支持实时弹幕：无需登录，只显示文字弹幕（自动过滤进场、礼物、点赞等）  \n「我的关注」进入直播间也能看到弹幕  \n修复斗鱼「全部分类」弹窗滚动错位，选中靠后分类后分类栏正确高亮",
+  "notes": "- 影视搜索接入橘子源，从橘子页进入时橘子结果优先展示\n- 直播源订阅列表不再显示订阅链接，说明文字已隐藏",
   "force": false,
-  "publishedAt": "2026-11-10T13:54:38+08:00",
-  "size": 16568687,
+  "publishedAt": "2026-11-14T00:01:42+08:00",
+  "size": 16691223,
   "runtime": "native"
 }
