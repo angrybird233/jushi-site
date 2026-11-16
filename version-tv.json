@@ -1,11 +1,11 @@
 {
-  "version": "1.12.26",
-  "versionCode": 58,
-  "apkUrl": "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.26-arm64.apk",
+  "version": "1.12.27",
+  "versionCode": 59,
+  "apkUrl": "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.27-arm64.apk",
   "apkUrlFallback": "",
-  "notes": "- 修复影视-橘子分类点「加载更多」后光标回到列表开头，现在自动落在新一页第一张卡片\n- 影视-豆瓣榜单「加载更多」同步修复，加载中保持按钮可聚焦、到底后不再丢焦点\n- 影视首页海报卡选中去掉放大动画，改静态描边 + 提亮，解决真机方向键连按时页面整体抖动",
+  "notes": "- AI看剧换源面板分成「官方线路 / 普通线路」两组，官方线路整体排在前面\n- AI看剧起播选最优线路改为官方线路优先，官方线路全部打不开时才回落普通线路\n- 修复官方线路被整组丢弃：现在解析官方线路后再测速，起播更稳、画质更有保障",
   "force": false,
-  "publishedAt": "2026-11-15T17:14:50+08:00",
-  "size": 16698776,
+  "publishedAt": "2026-11-16T22:31:09+08:00",
+  "size": 16703212,
   "runtime": "native"
 }
