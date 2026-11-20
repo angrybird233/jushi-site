@@ -1,15 +1,15 @@
 {
-  "version": "2.4.11",
-  "versionCode": 74,
-  "apkUrl": "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/releases/v2.4.11/JuShi-2.4.11.apk",
-  "size": 53470217,
-  "notes": "修复：影视与直播的封面不再整片变灰，首页、详情页大图恢复正常显示\n修复：平台账号头像不再显示空白\n修复：设置页「清除缓存」能正确显示占用体积",
+  "version": "2.4.12",
+  "versionCode": 75,
+  "apkUrl": "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/releases/v2.4.12/JuShi-2.4.12.apk",
+  "size": 53507173,
+  "notes": "新增：更新弹窗加「浏览器下载」，应用内下载卡住时可一键交给浏览器下载\n优化：安装包下载改多源自动切换 —— 默认走最快的源，源太慢自动换下一个\n新增：「一起看」分组标题加「更多 >」，点进可看该分组完整列表\n新增：院线热映/即将上映的影片没片源时提示「暂无资源」并退回列表，不再白等\n优化：更新与清除缓存弹窗视觉样式",
   "force": false,
-  "publishedAt": "2026-11-19T19:41:42+08:00",
+  "publishedAt": "2026-11-20T13:55:23+08:00",
   "apkUrlFallback": "",
   "apkUrls": [
-    "https://wwbpo.lanzouq.com/ihgjs4gnpf6f",
-    "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/releases/v2.4.11/JuShi-2.4.11.apk"
+    "https://wwbpo.lanzouq.com/i96cH4goi90h",
+    "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/releases/v2.4.12/JuShi-2.4.12.apk"
   ],
   "lanzouPwd": "5jbh"
 }

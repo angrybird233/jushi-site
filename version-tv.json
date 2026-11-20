@@ -1,16 +1,16 @@
 {
-  "version": "1.12.27",
-  "versionCode": 59,
-  "apkUrl": "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.27-arm64.apk",
-  "apkUrlFallback": "",
-  "notes": "- AI看剧换源面板分成「官方线路 / 普通线路」两组，官方线路整体排在前面\n- AI看剧起播选最优线路改为官方线路优先，官方线路全部打不开时才回落普通线路\n- 修复官方线路被整组丢弃：现在解析官方线路后再测速，起播更稳、画质更有保障",
-  "force": false,
-  "publishedAt": "2026-11-16T22:31:09+08:00",
-  "size": 16703212,
-  "runtime": "native",
+  "version": "1.12.28",
+  "versionCode": 60,
+  "apkUrl": "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.28-arm64.apk",
+  "apkUrlFallback": "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.28-arm64.apk",
   "apkUrls": [
-    "https://wwbpo.lanzouq.com/iihPC4go031e",
-    "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.27-arm64.apk"
+    "https://wwbpo.lanzouq.com/ivXL64gramlg",
+    "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.28-arm64.apk"
   ],
-  "lanzouPwd": "b8kc"
+  "notes": "- 短剧新增 真人剧 / 漫剧 / AI剧 / 排行榜，分类与网页版红果对齐，支持搜索与下滑加载更多\n- 短剧详情页补齐收藏、相关剧集，选集支持分阶段与正序/倒序",
+  "force": false,
+  "publishedAt": "2026-11-20T23:41:21+08:00",
+  "size": 20216198,
+  "runtime": "native",
+  "lanzouPwd": "1sz7"
 }
