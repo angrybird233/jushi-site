@@ -340,11 +340,11 @@ footer{border-top:1px solid var(--line);padding:34px 0 40px;margin-top:0;backgro
         <h1><span class="l1">影视、电视台、直播</span><span class="grad l2">一个 App 就够了</span></h1>
         <p class="lede">聚视把影视点播、电视频道，和斗鱼 / 虎牙 / B站 / 抖音 的平台直播放进同一个入口。手机上随手看，回家用电视接着看；安装包轻巧，老设备也跑得动。</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" data-dl="phone" href="https://wwbpo.lanzouq.com/ihgjs4gnpf6f">
+          <a class="btn btn-primary" data-dl-hero="phone" href="https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/releases/v2.4.11/JuShi-2.4.11.apk">
             <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
             下载手机版 <span id="heroPhoneMeta">v2.4.11 · 约 51.0 MB</span>
           </a>
-          <a class="btn btn-ghost" data-dl="tv" href="https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.26-arm64.apk">
+          <a class="btn btn-ghost" data-dl-hero="tv" href="https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.27-arm64.apk">
             <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
             下载电视版 <span id="heroTvMeta">v1.12.26 · 约 15.9 MB</span>
           </a>
@@ -702,6 +702,9 @@ footer{border-top:1px solid var(--line);padding:34px 0 40px;margin-top:0;backgro
     s.pick = i;
     s.url = s.urls[i];
     $$("[data-dl='" + kind + "']").forEach(function(a){ a.setAttribute("href", s.url); });
+    /* 顶部两个大按钮不走「下载源」切换：固定直链（免提取码），蓝奏云除外时才退分享页 */
+    var direct = s.urls.filter(function(u){ return !isLanzou(u); })[0] || s.urls[0];
+    $$("[data-dl-hero='" + kind + "']").forEach(function(a){ a.setAttribute("href", direct); });
     var box = $(c.src);
     if(box){
       box.hidden = s.urls.length < 2;
@@ -815,12 +818,13 @@ footer{border-top:1px solid var(--line);padding:34px 0 40px;margin-top:0;backgro
   }
 
   ["phone", "tv"].forEach(function(kind){ applySource(kind); });
-  $$("[data-dl]").forEach(function(a){
-    var kind = a.getAttribute("data-dl");
+  $$("[data-dl],[data-dl-hero]").forEach(function(a){
+    var kind = a.getAttribute("data-dl") || a.getAttribute("data-dl-hero");
     var s = STATE[kind];
     if(!s) return;
     a.addEventListener("click", function(){
-      toast("开始从 " + srcName(s.url) + " 下载 聚视" + s.label + " " + s.ver);
+      /* toast 按按钮自己的 href 判断来源：hero 永远是直链，卡片跟随所选源 */
+      toast("开始从 " + srcName(a.getAttribute("href")) + " 下载 聚视" + s.label + " " + s.ver);
     });
   });
 
