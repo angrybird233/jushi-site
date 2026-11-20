@@ -20,7 +20,7 @@ import sys
 import urllib.request
 
 OWNER = "angrygird233"
-REPO = "jushi-update"
+REPO = "jushi-new"
 BRANCH = "master"
 R2_BASE = "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev"
 # 站点文件名 → 线上路径
