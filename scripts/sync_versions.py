@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""把 Gitee 更新源的版本清单同步到站点仓库，作为前端实时接口失败时的兜底快照。
+"""把线上版本清单同步到站点仓库，作为前端实时接口失败时的兜底快照。
 
-数据源：https://gitee.com/angrygird233/jushi-update （master 分支）
-  - version-public.json  手机版
-  - version-tv.json      电视版
+数据源（按优先级）：
+  1. Cloudflare R2：https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev
+       - public/version.json   手机版
+       - tv/version-tv.json    电视版
+  2. Gitee 更新仓库（raw）—— 2026-11-20 起该仓库因「RAW 外链滥用」转私有，
+     匿名 raw 会 403，只作兜底。
 
-优先走 raw 直链；失败时回退到 Gitee OpenAPI 的 contents 接口（base64）。
 GitHub Actions 每天调用一次；也可以本地直接运行：
     python scripts/sync_versions.py --out-dir .
 """
@@ -20,7 +22,12 @@ import urllib.request
 OWNER = "angrygird233"
 REPO = "jushi-update"
 BRANCH = "master"
-FILES = ("version-public.json", "version-tv.json")
+R2_BASE = "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev"
+# 站点文件名 → 线上路径
+FILES = {
+    "version-public.json": ("/public/version.json", "version-public.json"),
+    "version-tv.json": ("/tv/version-tv.json", "version-tv.json"),
+}
 RAW_BASE = "https://gitee.com/{}/{}/raw/{}/".format(OWNER, REPO, BRANCH)
 API_BASE = "https://gitee.com/api/v5/repos/{}/{}/contents/".format(OWNER, REPO)
 
@@ -42,30 +49,39 @@ def validate(obj, name):
         raise ValueError("{}: apkUrl 必须是 https 地址".format(name))
 
 
-def read_manifest(name):
+def read_manifest(site_name):
+    r2_path, gitee_name = FILES[site_name]
     errors = []
-    try:
-        obj = json.loads(fetch(RAW_BASE + name).decode("utf-8"))
-        validate(obj, name)
-        return obj, "raw"
-    except Exception as exc:  # noqa: BLE001 - 两个源任意一个可用即可
-        errors.append("raw: {}".format(exc))
 
     try:
-        payload = json.loads(fetch(API_BASE + name + "?ref=" + BRANCH).decode("utf-8"))
+        obj = json.loads(fetch(R2_BASE + r2_path).decode("utf-8"))
+        validate(obj, site_name)
+        return obj, "r2"
+    except Exception as exc:  # noqa: BLE001 - 任意一个源可用即可
+        errors.append("r2: {}".format(exc))
+
+    try:
+        obj = json.loads(fetch(RAW_BASE + gitee_name).decode("utf-8"))
+        validate(obj, site_name)
+        return obj, "gitee-raw"
+    except Exception as exc:  # noqa: BLE001
+        errors.append("gitee-raw: {}".format(exc))
+
+    try:
+        payload = json.loads(fetch(API_BASE + gitee_name + "?ref=" + BRANCH).decode("utf-8"))
         if payload.get("encoding") != "base64" or not payload.get("content"):
             raise ValueError("contents 接口未返回 base64 内容")
         obj = json.loads(base64.b64decode(payload["content"]).decode("utf-8"))
-        validate(obj, name)
-        return obj, "api"
+        validate(obj, site_name)
+        return obj, "gitee-api"
     except Exception as exc:  # noqa: BLE001
-        errors.append("api: {}".format(exc))
+        errors.append("gitee-api: {}".format(exc))
 
     raise RuntimeError("; ".join(errors))
 
 
 def main():
-    parser = argparse.ArgumentParser(description="同步 Gitee 版本清单到站点仓库")
+    parser = argparse.ArgumentParser(description="同步线上版本清单到站点仓库")
     parser.add_argument("--out-dir", default=".", help="输出目录，默认当前目录")
     args = parser.parse_args()
     os.makedirs(args.out_dir, exist_ok=True)

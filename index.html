@@ -219,6 +219,18 @@ section{position:relative}
 .dl-alt{display:block;margin-top:14px;text-align:center;font-size:12px;color:var(--dim);text-decoration:underline;text-underline-offset:3px}
 .dl-alt:hover{color:var(--muted)}
 .dl-alt[hidden]{display:none}
+/* 下载源切换：默认主用（Gitee，国内最快），用户可以自己换到蓝奏云 / Cloudflare */
+.dl-srcs{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:16px}
+.dl-srcs[hidden]{display:none}
+.dl-srcs-label{font-size:11.5px;color:var(--dim);margin-right:2px}
+.dl-src{appearance:none;-webkit-appearance:none;font-family:inherit;cursor:pointer;
+  padding:6px 13px;border-radius:99px;font-size:12px;line-height:1.5;color:var(--muted);
+  background:rgba(255,255,255,.04);border:1px solid var(--line);transition:.2s}
+.dl-src:hover{color:var(--txt);border-color:var(--line-strong)}
+.dl-src.on{color:#fff;border-color:rgba(140,165,255,.5);
+  background:linear-gradient(135deg,rgba(91,124,250,.34),rgba(160,107,255,.26))}
+.dl-src-note{margin-top:9px;font-size:11.5px;line-height:1.7;color:#d9c08a}
+.dl-src-note[hidden]{display:none}
 .dl-note{margin-top:16px;padding:9px 12px;border-radius:10px;font-size:11.5px;line-height:1.7;color:#d9c08a;
   background:rgba(214,164,69,.09);border:1px solid rgba(214,164,69,.22)}
 .dl-note[hidden]{display:none}
@@ -328,13 +340,13 @@ footer{border-top:1px solid var(--line);padding:34px 0 40px;margin-top:0;backgro
         <h1><span class="l1">影视、电视台、直播</span><span class="grad l2">一个 App 就够了</span></h1>
         <p class="lede">聚视把影视点播、电视频道，和斗鱼 / 虎牙 / B站 / 抖音 的平台直播放进同一个入口。手机上随手看，回家用电视接着看；安装包轻巧，老设备也跑得动。</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" data-dl="phone" href="https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/public/JuShi-v2.4.4-public.apk">
+          <a class="btn btn-primary" data-dl="phone" href="https://gitee.com/angrygird233/jushi-update/releases/download/v2.4.11/JuShi-2.4.11.apk">
             <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
-            下载手机版 <span id="heroPhoneMeta">v2.4.4 · 约 49.6 MB</span>
+            下载手机版 <span id="heroPhoneMeta">v2.4.11 · 约 51.0 MB</span>
           </a>
-          <a class="btn btn-ghost" data-dl="tv" href="https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.17-arm64.apk">
+          <a class="btn btn-ghost" data-dl="tv" href="https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.26-arm64.apk">
             <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-            下载电视版 <span id="heroTvMeta">v1.12.17 · 约 15.6 MB</span>
+            下载电视版 <span id="heroTvMeta">v1.12.26 · 约 15.9 MB</span>
           </a>
         </div>
         <div class="hero-meta"><span><i>✓</i>免费使用</span><span><i>✓</i>应用内检查更新</span><span><i>✓</i>可以任意添加影视源内容</span></div>
@@ -483,13 +495,14 @@ footer{border-top:1px solid var(--line);padding:34px 0 40px;margin-top:0;backgro
           </div>
           <p class="dl-desc">竖屏刷片、投屏到大屏、直播弹幕、抖音直播与手势倍速，适合随身带着看。支持应用内更新。</p>
           <div class="dl-meta">
-            <div><span>当前版本</span><b id="phoneVer">v2.4.4</b></div>
-            <div><span>安装包大小</span><b id="phoneSize">约 49.6 MB</b></div>
-            <div><span>更新日期</span><b id="phoneDate">2026-11-09</b></div>
+            <div><span>当前版本</span><b id="phoneVer">v2.4.11</b></div>
+            <div><span>安装包大小</span><b id="phoneSize">约 51.0 MB</b></div>
+            <div><span>更新日期</span><b id="phoneDate">2026-11-20</b></div>
             <div><span>适用设备</span><b>Android 手机 / 平板</b></div>
           </div>
-          <a class="btn btn-primary btn-block" data-dl="phone" href="https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/public/JuShi-v2.4.4-public.apk">下载手机版 APK</a>
-          <a class="dl-alt" id="altPhone" href="#" target="_blank" rel="noopener" hidden>备用下载地址 ↗</a>
+          <a class="btn btn-primary btn-block" data-dl="phone" href="https://gitee.com/angrygird233/jushi-update/releases/download/v2.4.11/JuShi-2.4.11.apk">下载手机版 APK</a>
+          <div class="dl-srcs" id="srcPhone" hidden><span class="dl-srcs-label">下载源</span></div>
+          <p class="dl-src-note" id="notePhone" hidden></p>
         </div>
 
         <div class="dl-card tv reveal">
@@ -499,13 +512,14 @@ footer{border-top:1px solid var(--line);padding:34px 0 40px;margin-top:0;backgro
           </div>
           <p class="dl-desc">原生大屏界面，遥控器方向键 + OK 全程可操作；约 16 MB 的轻量安装包，开机即用、更新也在应用内完成。</p>
           <div class="dl-meta">
-            <div><span>当前版本</span><b id="tvVer">v1.12.17</b></div>
-            <div><span>安装包大小</span><b id="tvSize">约 15.6 MB</b></div>
-            <div><span>更新日期</span><b id="tvDate">2026-11-08</b></div>
+            <div><span>当前版本</span><b id="tvVer">v1.12.26</b></div>
+            <div><span>安装包大小</span><b id="tvSize">约 15.9 MB</b></div>
+            <div><span>更新日期</span><b id="tvDate">2026-11-15</b></div>
             <div><span>适用设备</span><b>Android TV · arm64</b></div>
           </div>
-          <a class="btn btn-primary btn-block" data-dl="tv" href="https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.17-arm64.apk">下载 TV 版 APK</a>
-          <a class="dl-alt" id="altTv" href="#" target="_blank" rel="noopener" hidden>备用下载地址 ↗</a>
+          <a class="btn btn-primary btn-block" data-dl="tv" href="https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.26-arm64.apk">下载 TV 版 APK</a>
+          <div class="dl-srcs" id="srcTv" hidden><span class="dl-srcs-label">下载源</span></div>
+          <p class="dl-src-note" id="noteTv" hidden></p>
         </div>
       </div>
 
@@ -517,7 +531,8 @@ footer{border-top:1px solid var(--line);padding:34px 0 40px;margin-top:0;backgro
           <li>系统若提示风险，到「设置 → 安全」中允许该来源安装未知应用；</li>
           <li>电视 / 盒子可通过 U 盘、文件管理器或 ADB 安装，TV 版需 arm64 设备；</li>
           <li>微信 / QQ 内置浏览器可能拦截 APK，请点右上角「在浏览器打开」再下载；</li>
-          <li>版本号与下载地址自动从 <a href="https://gitee.com/angrygird233/jushi-update" target="_blank" rel="noopener">聚视更新源 ↗</a> 读取，发新版无需改页面。</li>
+          <li>下载默认走 <b>蓝奏云</b>（国内速度最快）：打开后输入页面上显示的提取码即可下载；蓝奏云打不开时，点按钮下方的「下载源」换成 Cloudflare 直链。</li>
+          <li>版本号与下载地址由官网清单自动同步，发新版无需改页面。</li>
         </ol>
       </div>
     </div>
@@ -566,21 +581,31 @@ footer{border-top:1px solid var(--line);padding:34px 0 40px;margin-top:0;backgro
      （由 .github/workflows/sync-versions.yml 每天从 Gitee 同步一次）。
      实时接口限流 / 超时 / 断网时，页面依旧能显示并下载，不会白板。 */
   var UPDATE = {
+    /* 清单主源是 R2（自己的桶，PUT 完立刻可读、不会被判外链滥用）；
+       Gitee 仓库已转私有，API 还能读但随时可能变，只作兜底。 */
+    r2:{phone:"/public/version.json", tv:"/tv/version-tv.json"},
     api:"https://gitee.com/api/v5/repos/angrygird233/jushi-update/contents/",
     branch:"master",
     home:"https://gitee.com/angrygird233/jushi-update",
     files:{phone:"version-public.json", tv:"version-tv.json"}
   };
   var CDN = "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev";
+  /* 内置快照只在「清单读不到」时兜底，`urls` 顺序即优先级（主用在前）。
+     2026-11-20 起 Gitee 仓库被判「RAW 外链滥用」转私有，匿名 raw 与 Release 附件
+     全部 403，所以主用换成蓝奏云（CDN 快、免登录），Cloudflare 兜底。 */
   var STATE = {
-    phone:{label:"手机版", ver:"v2.4.4", size:"约 49.6 MB", date:"2026-11-09",
-           url:CDN + "/public/JuShi-v2.4.4-public.apk"},
-    tv:{label:"电视版", ver:"v1.12.17", size:"约 15.6 MB", date:"2026-11-08",
-        url:CDN + "/tv/JuShiTV-TV-v1.12.17-arm64.apk"}
+    phone:{label:"手机版", ver:"v2.4.11", size:"约 51.0 MB", date:"2026-11-20", pwd:"5jbh", pick:0,
+           urls:["https://wwbpo.lanzouq.com/ihgjs4gnpf6f",
+                 CDN + "/releases/v2.4.11/JuShi-2.4.11.apk"]},
+    tv:{label:"电视版", ver:"v1.12.27", size:"约 15.9 MB", date:"2026-11-16", pwd:"b8kc", pick:0,
+        urls:["https://wwbpo.lanzouq.com/iihPC4go031e",
+              CDN + "/tv/JuShiTV-TV-v1.12.27-arm64.apk"]}
   };
   var SLOTS = {
-    phone:{ver:"#phoneVer", size:"#phoneSize", date:"#phoneDate", hero:"#heroPhoneMeta", alt:"#altPhone"},
-    tv:{ver:"#tvVer", size:"#tvSize", date:"#tvDate", hero:"#heroTvMeta", alt:"#altTv"}
+    phone:{ver:"#phoneVer", size:"#phoneSize", date:"#phoneDate", hero:"#heroPhoneMeta",
+           src:"#srcPhone", note:"#notePhone"},
+    tv:{ver:"#tvVer", size:"#tvSize", date:"#tvDate", hero:"#heroTvMeta",
+        src:"#srcTv", note:"#noteTv"}
   };
   var CACHE_KEY = "jushi-update-v1";
 
@@ -623,34 +648,108 @@ footer{border-top:1px solid var(--line);padding:34px 0 40px;margin-top:0;backgro
     else{ el.hidden = true; el.textContent = ""; }
   }
   function failNote(labels){
-    return "版本清单暂时没读到（" + labels.join("、") + "），当前显示的是页面内置 / 上次缓存的版本，下载按钮仍可正常使用。也可到 <a href=\"" + UPDATE.home + "\" target=\"_blank\" rel=\"noopener\">更新源仓库</a> 查看最新版本。";
+    return "版本清单暂时没读到（" + labels.join("、") + "），当前显示的是页面内置 / 上次缓存的版本，下载按钮仍可正常使用。";
   }
   function render(kind, d){
-    if(!d || !d.version || !d.apkUrl) return false;
+    if(!d || !d.version) return false;
     var s = STATE[kind], c = SLOTS[kind];
     if(!s || !c) return false;
+
+    /* 清单里 apkUrls 是数组（顺序即优先级），老清单只有 apkUrl / apkUrlFallback */
+    var urls = [];
+    if(Object.prototype.toString.call(d.apkUrls) === "[object Array]"){
+      d.apkUrls.forEach(function(u){ if(u) urls.push(String(u).trim()); });
+    }
+    if(d.apkUrl) urls.push(String(d.apkUrl).trim());
+    if(d.apkUrlFallback) urls.push(String(d.apkUrlFallback).trim());
+    urls = urls.filter(function(u, i){
+      return /^https?:/i.test(u) && urls.indexOf(u) === i;
+    });
+    if(!urls.length) return false;
+
     s.ver = "v" + String(d.version).replace(/^v/i, "");
-    s.url = String(d.apkUrl);
+    s.urls = urls;
+    s.pwd = String(d.lanzouPwd || "");
+    /* 清单更新（多半是发了新版本）→ 下载源回到默认的主用源 */
+    s.pick = 0;
     var mb = fmtSize(d.size); if(mb) s.size = mb;
     if(d.publishedAt) s.date = String(d.publishedAt).slice(0, 10);
 
-    $$("[data-dl='" + kind + "']").forEach(function(a){ a.setAttribute("href", s.url); });
+    buildSources(kind);
+    applySource(kind);
     setText(c.ver, s.ver);
     setText(c.size, s.size);
     setText(c.date, s.date);
     setText(c.hero, s.ver + " · " + s.size);
-    var alt = $(c.alt);
-    if(alt){
-      if(d.apkUrlFallback && d.apkUrlFallback !== s.url){
-        alt.href = d.apkUrlFallback;
-        alt.textContent = "备用下载地址 ↗";
-        alt.hidden = false;
-      }else{
-        alt.hidden = true;
-      }
-    }
     return true;
   }
+
+  /* ---------- 下载源 ---------- */
+  function isLanzou(u){ return /lanzou|lanosso|woozooo/i.test(String(u || "")); }
+  function srcName(u){
+    var x = String(u || "").toLowerCase();
+    if(x.indexOf("gitee.com") >= 0) return "Gitee";
+    if(isLanzou(x)) return "蓝奏云";
+    if(x.indexOf("r2.dev") >= 0 || x.indexOf("cloudflare") >= 0) return "Cloudflare";
+    return "备用源";
+  }
+
+  /* 按当前选中的源更新下载按钮；默认下标 0 = 主用（Gitee） */
+  function applySource(kind){
+    var s = STATE[kind], c = SLOTS[kind];
+    if(!s || !c || !s.urls || !s.urls.length) return;
+    var i = Math.min(Math.max(s.pick || 0, 0), s.urls.length - 1);
+    s.pick = i;
+    s.url = s.urls[i];
+    $$("[data-dl='" + kind + "']").forEach(function(a){ a.setAttribute("href", s.url); });
+    var box = $(c.src);
+    if(box){
+      box.hidden = s.urls.length < 2;
+      $$(c.src + " .dl-src").forEach(function(b, idx){ b.classList.toggle("on", idx === i); });
+    }
+    var note = $(c.note);
+    if(note){
+      if(isLanzou(s.url)){
+        note.hidden = false;
+        note.textContent = s.pwd
+          ? ("蓝奏云是分享页，打开后输入提取码 " + s.pwd + " 即可下载。")
+          : "蓝奏云是分享页，打开后点「普通下载」即可。";
+      }else{
+        note.hidden = true;
+        note.textContent = "";
+      }
+    }
+  }
+
+  function buildSources(kind){
+    var s = STATE[kind], c = SLOTS[kind];
+    var box = $(c.src);
+    if(!box) return;
+    $$(c.src + " .dl-src").forEach(function(b){ b.parentNode.removeChild(b); });
+    if(!s.urls || s.urls.length < 2){ box.hidden = true; return; }
+    box.hidden = false;
+    s.urls.forEach(function(u, i){
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "dl-src";
+      b.textContent = srcName(u) + (i === 0 ? "（主用）" : "");
+      b.addEventListener("click", function(){
+        s.pick = i;
+        applySource(kind);
+        toast("已切换到 " + srcName(u) + " 下载源");
+      });
+      box.appendChild(b);
+    });
+  }
+  /* 主源：R2 上的清单（已给桶配 CORS，浏览器可直接 fetch） */
+  function loadR2(kind){
+    var url = CDN + UPDATE.r2[kind] + "?_=" + Date.now();
+    return fetch(url, {cache:"no-store"}).then(function(r){
+      if(!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    });
+  }
+  /* 兜底：Gitee OpenAPI（raw 直链没有 CORS 头，浏览器 fetch 会被拦） */
   function loadRemote(kind){
     var url = UPDATE.api + UPDATE.files[kind] + "?ref=" + UPDATE.branch + "&_=" + Date.now();
     return fetch(url, {cache:"no-store"}).then(function(r){
@@ -671,17 +770,22 @@ footer{border-top:1px solid var(--line);padding:34px 0 40px;margin-top:0;backgro
   }
   function sync(){
     if(!window.fetch || !window.Promise || !window.atob){
-      showStatus("当前浏览器版本较旧，未能同步最新版本号；页面显示的是内置版本，下载按钮仍可正常使用。也可到 <a href=\"" + UPDATE.home + "\" target=\"_blank\" rel=\"noopener\">更新源仓库</a> 查看最新版本。");
+      showStatus("当前浏览器版本较旧，未能同步最新版本号；页面显示的是内置版本，下载按钮仍可正常使用。");
       return;
     }
     var kinds = ["phone", "tv"];
     Promise.all(kinds.map(function(k){
-      return loadRemote(k)
+      return loadR2(k)
         .then(function(d){ return {k:k, d:d, src:"live"}; })
         .catch(function(){
-          return loadLocal(k)
-            .then(function(d){ return {k:k, d:d, src:"snapshot"}; })
-            .catch(function(){ return {k:k, d:null, src:null}; });
+          /* R2 不可达（极少数情况）→ 退 Gitee API → 再退同源快照 */
+          return loadRemote(k)
+            .then(function(d){ return {k:k, d:d, src:"live"}; })
+            .catch(function(){
+              return loadLocal(k)
+                .then(function(d){ return {k:k, d:d, src:"snapshot"}; })
+                .catch(function(){ return {k:k, d:null, src:null}; });
+            });
         });
     })).then(function(list){
       var fresh = {}, failed = [], snapshots = [];
@@ -710,12 +814,14 @@ footer{border-top:1px solid var(--line);padding:34px 0 40px;margin-top:0;backgro
     });
   }
 
+  ["phone", "tv"].forEach(function(kind){ applySource(kind); });
   $$("[data-dl]").forEach(function(a){
     var kind = a.getAttribute("data-dl");
     var s = STATE[kind];
     if(!s) return;
-    a.setAttribute("href", s.url);
-    a.addEventListener("click", function(){ toast("开始下载 聚视" + s.label + " " + s.ver); });
+    a.addEventListener("click", function(){
+      toast("开始从 " + srcName(s.url) + " 下载 聚视" + s.label + " " + s.ver);
+    });
   });
 
   /* 先用本地缓存秒开，再拉实时清单覆盖；实时接口不可达时自动回退到同源每日快照 */

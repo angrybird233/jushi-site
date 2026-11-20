@@ -3,7 +3,14 @@
   "versionCode": 74,
   "apkUrl": "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/releases/v2.4.11/JuShi-2.4.11.apk",
   "size": 53470217,
-  "notes": "修复：影视与直播的封面不再整片变灰，首页、详情页大图恢复正常显示\r\n修复：平台账号头像不再显示空白\r\n修复：设置页「清除缓存」能正确显示占用体积",
+  "notes": "修复：影视与直播的封面不再整片变灰，首页、详情页大图恢复正常显示\n修复：平台账号头像不再显示空白\n修复：设置页「清除缓存」能正确显示占用体积",
   "force": false,
-  "publishedAt": "2026-11-19T19:41:43+08:00"
+  "publishedAt": "2026-11-19T19:41:42+08:00",
+  "apkUrlFallback": "",
+  "apkUrls": [
+    "https://wwbpo.lanzouq.com/ihgjs4gnpf6f",
+    "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/releases/v2.4.11/JuShi-2.4.11.apk",
+    "https://gitee.com/angrygird233/jushi-update/releases/download/v2.4.11/JuShi-2.4.11.apk"
+  ],
+  "lanzouPwd": "5jbh"
 }

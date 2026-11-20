@@ -7,5 +7,11 @@
   "force": false,
   "publishedAt": "2026-11-16T22:31:09+08:00",
   "size": 16703212,
-  "runtime": "native"
+  "runtime": "native",
+  "apkUrls": [
+    "https://wwbpo.lanzouq.com/iihPC4go031e",
+    "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.27-arm64.apk",
+    "https://gitee.com/angrygird233/jushi-update/releases/download/v1.12.27/JuShiTV-TV-v1.12.27-arm64.apk"
+  ],
+  "lanzouPwd": "b8kc"
 }
