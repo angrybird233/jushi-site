@@ -1,16 +1,16 @@
 {
-  "version": "1.12.29",
-  "versionCode": 61,
-  "apkUrl": "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.29-arm64.apk",
-  "apkUrlFallback": "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.29-arm64.apk",
+  "version": "1.12.30",
+  "versionCode": 62,
+  "apkUrl": "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.30-arm64.apk",
+  "apkUrlFallback": "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.30-arm64.apk",
   "apkUrls": [
-    "https://wwbpo.lanzouq.com/iFRpL4gy8ymj",
-    "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.29-arm64.apk"
+    "https://wwbpo.lanzouq.com/iwWa84h72g4b",
+    "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.30-arm64.apk"
   ],
-  "notes": "- 短剧列表加了缓存：从详情返回不再重新加载，分类、页码和滚动位置原地还原，搜索结果也不会丢\n- 短剧登录重做成全屏扫码页，直接走官网账号登录，支持「已扫码待确认」提示\n- 登录状态会记住，重启应用仍然有效，登录按钮直接显示昵称",
+  "notes": "- 播放页支持长按右键快进\n- 快进不再黑屏、不再乱换源\n- 影视详情返回焦点回原卡片\n- 设置子页返回焦点回原行\n- 检查更新改成弹窗提示\n- 短剧详情页重新排版",
   "force": false,
-  "publishedAt": "2026-11-22T12:28:03+08:00",
-  "size": 20228442,
+  "publishedAt": "2026-11-24T18:00:38+08:00",
+  "size": 6874835,
   "runtime": "native",
-  "lanzouPwd": "5aik"
+  "lanzouPwd": "bmyw"
 }
