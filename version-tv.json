@@ -1,16 +1,16 @@
 {
-  "version": "1.12.30",
-  "versionCode": 62,
-  "apkUrl": "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.30-arm64.apk",
-  "apkUrlFallback": "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.30-arm64.apk",
+  "version": "1.12.31",
+  "versionCode": 63,
+  "apkUrl": "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.31-arm64.apk",
+  "apkUrlFallback": "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.31-arm64.apk",
   "apkUrls": [
-    "https://wwbpo.lanzouq.com/iwWa84h72g4b",
-    "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.30-arm64.apk"
+    "https://wwbpo.lanzouq.com/i82Jh4hadywb",
+    "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/tv/JuShiTV-TV-v1.12.31-arm64.apk"
   ],
-  "notes": "- 播放页支持长按右键快进\n- 快进不再黑屏、不再乱换源\n- 影视详情返回焦点回原卡片\n- 设置子页返回焦点回原行\n- 检查更新改成弹窗提示\n- 短剧详情页重新排版",
+  "notes": "- 影视首页去掉刷新按钮，搜索移到豆瓣后面，新增收藏入口直达「我的收藏」\n- 顶部登录/搜索/收藏改为与一级 tab 同款样式并保留图标，统一居左排列\n- 记录与收藏改为确认键才切换页签，从收藏入口进入默认选中「我的收藏」",
   "force": false,
-  "publishedAt": "2026-11-24T18:00:38+08:00",
-  "size": 6874835,
+  "publishedAt": "2026-11-25T21:09:45+08:00",
+  "size": 6891489,
   "runtime": "native",
-  "lanzouPwd": "bmyw"
+  "lanzouPwd": "5jbh"
 }
