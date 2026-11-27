@@ -1,15 +1,15 @@
 {
-  "version": "2.4.12",
-  "versionCode": 75,
-  "apkUrl": "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/releases/v2.4.12/JuShi-2.4.12.apk",
-  "size": 53507173,
-  "notes": "新增：更新弹窗加「浏览器下载」，应用内下载卡住时可一键交给浏览器下载\n优化：安装包下载改多源自动切换 —— 默认走最快的源，源太慢自动换下一个\n新增：「一起看」分组标题加「更多 >」，点进可看该分组完整列表\n新增：院线热映/即将上映的影片没片源时提示「暂无资源」并退回列表，不再白等\n优化：更新与清除缓存弹窗视觉样式",
+  "version": "2.4.13",
+  "versionCode": 76,
+  "apkUrl": "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/releases/v2.4.13/JuShi-2.4.13.apk",
+  "size": 32734512,
+  "notes": "新增：AI看剧首页加「继续观看」，播放历史独立成页\r\n优化：安装包减重约 20MB，图片缓存更省空间\r\n修复：起播/续播卡住、切内核双声和进度条闪烁等播放问题\r\n优化：电视台顶栏、收藏入口与选集/线路样式统一\r\n新增：热门分组加「更多」入口，可直接看完整榜单",
   "force": false,
-  "publishedAt": "2026-11-20T13:55:23+08:00",
-  "apkUrlFallback": "",
+  "publishedAt": "2026-11-26T22:17:37+08:00",
+  "apkUrlFallback": "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/releases/v2.4.13/JuShi-2.4.13.apk",
   "apkUrls": [
-    "https://wwbpo.lanzouq.com/i96cH4goi90h",
-    "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/releases/v2.4.12/JuShi-2.4.12.apk"
+    "https://wwbpo.lanzouq.com/ieVUU4hdvp9a",
+    "https://pub-cf92782c109446ce9508cffad27aac8a.r2.dev/releases/v2.4.13/JuShi-2.4.13.apk"
   ],
   "lanzouPwd": "5jbh"
 }
